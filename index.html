@@ -11,12 +11,35 @@
 
 <style>
   body {
-    background-color: steelblue;
+    background-color: cornflowerblue;
+ 
   }
 
-    nav {
-            background-color: rgb(229, 182, 255);
-           }
+  nav {
+    background-color: black;
+  }
+
+  .img {
+    display: flex;
+    flex: 33.3%;
+    width:350px;
+    height: 350px;
+    background-color: white;
+    
+  }
+
+label {
+    display: inline-block;
+    width: 200px;
+}
+
+.train {
+  background-color: #0e3080;
+  padding: 20px;
+  margin: 10px;
+  color: white;
+}
+
 </style>
 </head>
 <body>
@@ -26,10 +49,10 @@
 
 <body class="vh-100 overflow-auto">
   
-<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+<nav class="navbar navbar-expand-lg navbar-bg-dark bg-body-tertiary fixed-top">
   <div class="container-fluid">
 
-    <a class="navbar-brand" href="#">test</a>
+    <a class="navbar-brand" href="#"> <img src="train.png" alt="LOGO" height="50px" width="55px" class="rounded-circle"></a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -43,16 +66,15 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="page2.html">Transite Schedule</a>
+            <a class="nav-link" href="page2.html">Transit Schedule</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="page3.html">Help/Contact Us</a>
           </li>
           
-          </li>
         </ul>
         <form class="d-flex mt-3" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -63,6 +85,167 @@
   </div>
 </nav>
 
+<br>
+<br>
+<br>
+<br>
 
+<div class="container-fluid">
+<div class="train">
+  <div class="text-center">
+  <h2>TRAIN FARE</h2>
+</div>
+</div>
+
+<br>
+<br>
+
+<div class="row">
+
+
+  <div class="col">
+    <div class="img">
+      
+      <img src="route.png">
+  </div>
+  </div>
+
+
+<br>
+<br>
+
+
+<div class="col">
+<div class="text-center">
+  <div class="train">
+<h4> LEAVING FROM </h4>
+</div>
+<form>
+      <label>Choose where you're leaving from:</label>
+
+    <select class="form-select" id="leave">
+      <option value="20">North Avenue</option>
+      <option value="12.25">Quezon Avenue</option>
+      <option value="14.25">Kamuning</option>
+      <option value="15">Aranta Center-Cubao</option>
+      <option value="19.55">Santolan-Annapolis</option>
+      <option value="18">Ortigas</option>
+      <option value="19">Shaw Boulevard</option>
+      <option value="20">Boni</option>
+      <option value="21">Guadalupe</option>
+      <option value="22">Buendia</option>
+      <option value="17.25">Ayala</option>
+      <option value="20.25">Magallanes</option>
+      <option value="19.25">Taft Avenue</option>
+    </select>
+
+</form>
+</div>
+<br>
+<br>
+
+
+<div class="text-center">
+  <div class="train">
+<h4> GOING TO </h4>
+</div>
+<form>
+      <label>Choose where you're going to:</label>
+
+    <select class="form-select" id="going">
+      <option value="20">North Avenue</option>
+      <option value="12.25">Quezon Avenue</option>
+      <option value="14.25">Kamuning</option>
+      <option value="15">Aranta Center-Cubao</option>
+      <option value="19.55">Santolan-Annapolis</option>
+      <option value="18">Ortigas</option>
+      <option value="19">Shaw Boulevard</option>
+      <option value="20">Boni</option>
+      <option value="21">Guadalupe</option>
+      <option value="22">Buendia</option>
+      <option value="17.25">Ayala</option>
+      <option value="20.25">Magallanes</option>
+      <option value="19.25">Taft Avenue</option>
+    </select>
+
+
+</form>
+</div>
+
+<br>
+<br>
+
+<div class="text-center">
+  <div class="train">
+<h4> Ticket Type </h4>
+<div class="img">
+<img src="single.png">
+</div>
+</div>
+
+</div>
+
+<br>
+<br>
+
+<div class="text-center">
+  <button type="button" onclick ="add()"class="btn btn-lg btn-light" value="none" id="fare1"> Regular Fare </button>
+
+
+
+  <button type="button" onclick ="disc_fare()"class="btn btn-lg btn-light" value="0.2" id="fare2"> Discounted Fare </button>
+</div>
+</div>
+
+
+<div class="col">
+  <span class="form-control"> <h1 id="Result">Your ticket price is: </h1></span>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+<script>
+
+  
+  function add() {
+  var leavin1=Number(document.getElementById('leave').value);
+  var goin2 = Number(document.getElementById('going').value);
+
+  var disc1 = Number(document.getElementById('fare1').value);
+  var final_rate= leavin1 + goin2;
+
+ document.getElementById ("Result").innerHTML='Value is' + ' ' + final_rate + ' ' + 'pesos';
+
+}
+
+
+</script>
+
+<script>
+
+  
+  function disc_fare() {
+  var leavin =Number(document.getElementById('leave').value);
+  var goin = Number(document.getElementById('going').value);
+
+  var disc = Number(document.getElementById('fare2').value);
+  var total= leavin + goin;
+  var final_rate = total - (disc * leavin);
+
+   document.getElementById ("Result").innerHTML='Value is' + ' ' + final_rate + ' ' +'pesos';
+
+}
+
+
+
+</script>
+
+
+
+</div>
 </body>
 </html>
